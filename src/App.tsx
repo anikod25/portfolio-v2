@@ -18,7 +18,13 @@ function Navigation() {
     <a className="brand" href="#top" aria-label="Aniket Kodgirwar, home"><span className="brand-mark" aria-hidden="true"/><span>ANIKET KODGIRWAR<small>COMPUTER SCIENCE · PUNE</small></span></a>
     <button className="menu-toggle" aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
     <nav className={open ? 'site-nav is-open' : 'site-nav'} aria-label="Main navigation">{navItems.map(item => <a key={item.id} href={`#${item.id}`} onClick={() => setOpen(false)}>{item.label}</a>)}</nav>
-    <a className="header-contact" href={`mailto:${profiles.email}`}>LET'S TALK <ArrowUpRight size={14} /></a>
+    <div className="header-actions">
+      <a className="header-contact" href={`mailto:${profiles.email}`}>LET'S TALK <ArrowUpRight size={14} /></a>
+      <div className="header-socials" role="group" aria-label="Social profiles">
+        <a href={profiles.github} target="_blank" rel="noreferrer" aria-label="GitHub profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.94.58.1.79-.25.79-.56 0-.27-.01-1.16-.02-2.1-3.22.7-3.9-.78-3.9-.78-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.57-.29-5.27-1.29-5.27-5.74 0-1.27.46-2.3 1.2-3.12-.12-.3-.52-1.5.12-3.13 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.83 0c2.22-1.5 3.2-1.19 3.2-1.19.64 1.63.24 2.83.12 3.13.75.82 1.2 1.85 1.2 3.12 0 4.46-2.7 5.45-5.28 5.73.42.36.78 1.06.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .31.21.66.8.56A11.5 11.5 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/></svg></a>
+        <a href={profiles.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM3.56 9h3.56v11.45H3.56z"/></svg></a>
+      </div>
+    </div>
   </header>
 }
 
