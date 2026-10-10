@@ -480,27 +480,27 @@ button { cursor: pointer; }
 .achievement-record-button { position: relative; display: grid; width: 100%; min-height: 105px; grid-template-columns: 62px minmax(0,1fr) 28px; gap: 22px; align-items: center; padding: 19px 12px 19px 5px; border: 0; color: var(--charcoal); background: transparent; text-align: left; cursor: pointer; transition: background-color .18s ease, padding .18s ease; }
 .achievement-record-button:hover, .achievement-record-button:focus-visible, .achievement-record.is-selected .achievement-record-button { padding-left: 13px; background: rgba(34,97,146,.045); }
 .achievement-record-button:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
-.achievement-record-index { align-self: start; padding-top: 5px; color: var(--blue); font: 9px var(--mono); letter-spacing: .06em; }
+.achievement-record-index { align-self: start; padding-top: 5px; color: var(--blue); font: 11px var(--mono); letter-spacing: .06em; }
 .achievement-record-main { display: grid; gap: 5px; min-width: 0; }
-.achievement-record-category { color: var(--blue); font: 8px var(--mono); letter-spacing: .09em; }
+.achievement-record-category { color: var(--blue); font: 10px var(--mono); letter-spacing: .09em; }
 .achievement-record-category i { color: var(--muted); font-style: normal; }
 .achievement-record-main strong { color: var(--charcoal); font: 500 clamp(24px,3vw,34px)/1.05 var(--serif); letter-spacing: -.025em; }
 .achievement-record-caption { color: var(--muted); font: 11px/1.45 var(--sans); }
 .achievement-record-arrow { display: grid; width: 25px; height: 25px; place-items: center; color: var(--blue); font: 19px/1 var(--sans); transition: transform .18s ease; }
 .achievement-record-button:hover .achievement-record-arrow, .achievement-record-button:focus-visible .achievement-record-arrow { transform: translateX(3px); }
 .achievement-detail { display: grid; grid-template-columns: minmax(200px,.8fr) minmax(250px,1.2fr) auto auto; gap: 24px; align-items: center; min-height: 100px; padding: 17px 20px; border-bottom: 1px solid rgba(34,97,146,.45); background: rgba(34,97,146,.045); }
-.achievement-detail .eyebrow { margin: 0 0 7px; font-size: 9px; }
+.achievement-detail .eyebrow { margin: 0 0 7px; font-size: 11px; }
 .achievement-detail h3 { margin: 0; color: var(--charcoal); font: 500 21px/1.15 var(--serif); }
 .achievement-detail h3 span { display: block; margin-top: 5px; color: var(--muted); font: 9px/1.4 var(--mono); }
 .achievement-detail > p { margin: 0; color: var(--charcoal); font: 11px/1.65 var(--sans); opacity: .8; }
 .achievement-detail > a { display: inline-flex; align-items: center; gap: 5px; color: var(--blue); font: 9px var(--mono); white-space: nowrap; }
 .achievement-detail-close { display: grid; width: 28px; height: 28px; place-items: center; border: 1px solid rgba(34,97,146,.4); color: var(--blue); background: transparent; cursor: pointer; }
 .achievement-detail-close:hover, .achievement-detail-close:focus-visible { color: var(--paper); background: var(--blue); }
-.achievement-context { display: grid; grid-template-columns: minmax(220px,.7fr) repeat(2,minmax(0,1fr)); gap: 30px; align-items: stretch; margin-top: 52px; padding-top: 22px; border-top: 1px solid rgba(23,26,29,.2); }
-.achievement-context-heading .eyebrow { margin: 3px 0 9px; color: var(--blue); font-size: 9px; }
+.achievement-context { display: grid; grid-template-columns: minmax(220px,.7fr) repeat(2,minmax(0,1fr)); gap: 30px; align-items: center; margin-top: 52px; padding-top: 22px; border-top: 1px solid rgba(23,26,29,.2); }
+.achievement-context-heading .eyebrow { margin: 3px 0 9px; color: var(--blue); font-size: 11px; }
 .achievement-context-heading h3 { max-width: 210px; margin: 0; font: 500 25px/1.13 var(--serif); }
 .achievement-context-item { min-width: 0; padding: 5px 16px 6px; border-left: 1px solid rgba(34,97,146,.35); }
-.achievement-context-item > span { color: var(--blue); font: 7px var(--mono); letter-spacing: .08em; }
+.achievement-context-item > span { color: var(--blue); font: 9px var(--mono); letter-spacing: .08em; }
 .achievement-context-item h4 { margin: 12px 0 5px; color: var(--charcoal); font: 500 22px/1.12 var(--serif); }
 .achievement-context-item p { margin: 0; color: var(--muted); font: 11px/1.55 var(--sans); }
 @media (max-width: 800px) {
