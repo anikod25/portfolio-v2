@@ -144,7 +144,14 @@ function AchievementsExperience() {
   </div></section>
 }
 function About() {
-  return <section className="section about-section" id="about"><div className="section-wrap about-grid"><SectionHeading label="04 / ABOUT ANIKET" title="Curiosity, with a practical streak." /><div className="about-copy"><p className="about-lead">I'm a Computer Science Engineering student at MIT-WPU in Pune, drawn to cybersecurity, agentic AI, and the systems people rely on.</p><p>I like turning questions into working software, and learning from the details that surface along the way.</p><div className="about-writing"><span className="writing-rule" aria-hidden="true"/><p className="eyebrow">IN THE MARGINS</p><p>Technical notes, small experiments, and poetry all have a place in how I think. The available source material did not include published writing to reproduce here.</p></div><div className="about-signature">Aniket <span>— learning by making</span></div></div></div></section>
+  return <section className="section about-section" id="about">
+    <div className="section-wrap about-grid"><SectionHeading label="04 / ABOUT ANIKET" title="Curiosity, with a practical streak." /><div className="about-copy"><p className="about-lead">I'm a Computer Science Engineering student at MIT-WPU in Pune, drawn to cybersecurity, agentic AI, and the systems people rely on.</p><p>I like turning questions into working software, and learning from the details that surface along the way.</p>
+      <article className="about-writing" aria-labelledby="life-poem-title">
+        <p className="eyebrow">IN THE MARGINS</p><h3 id="life-poem-title">Life</h3>
+        <div className="poem-lines"><p>An open canvas soon to be filled up with memories</p><p>waiting for the stories to make it interesting</p><p>Warm like the sunshine, soothing as the rain</p><p>Chaotic as the storm, calm as the sea</p><p>Life is mysterious but a journey full of stories</p></div>
+      </article>
+      <div className="about-signature">Aniket <span>— learning by making</span></div></div></div>
+  </section>
 }
 
 function Contact() {

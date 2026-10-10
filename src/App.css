@@ -363,9 +363,10 @@ button { cursor: pointer; }
 .milestone-entry p { margin: 5px 0 0; color: #5e5b55; font: 11px/1.55 var(--sans); }
 .timeline-note { max-width: 815px; margin: 20px auto 0; padding-left: 20px; }
 .about-writing { position: relative; margin-top: 28px; padding: 18px 0 6px 19px; border-left: 1px solid rgba(34,97,146,.42); }
-.about-writing .eyebrow { margin: 0 0 7px; font-size: 7px; }
-.about-writing p:last-child { max-width: 390px; margin: 0; color: #716d65; font: 11px/1.7 var(--mono); }
-.writing-rule { position: absolute; top: 0; right: 25%; width: 35px; border-top: 1px solid var(--blue); }
+.about-writing .eyebrow { margin: 0 0 8px; font-size: 7px; }
+.about-writing h3 { margin: 0 0 7px; color: var(--charcoal); font: 500 19px/1.2 var(--serif); }
+.poem-lines { display: grid; gap: 0; }
+.poem-lines p { max-width: 410px; margin: 0; color: var(--muted); font: 11px/1.75 var(--mono); }
 .contact-section { position: relative; overflow: hidden; padding: clamp(55px,8vw,98px) 24px 0; color: var(--paper); background: radial-gradient(ellipse at 50% 45%,#49382a,#2b241e 64%,#1b1917); isolation: isolate; }
 .contact-desk { position: absolute; z-index: -1; inset: 0; opacity: .3; background: repeating-linear-gradient(1deg,transparent 0 25px,rgba(219,164,104,.06) 26px,transparent 29px 58px),radial-gradient(ellipse at 50% 50%,transparent 34%,rgba(0,0,0,.55) 100%); }
 .contact-paper { position: relative; display: grid; width: min(880px,100%); min-height: 440px; grid-template-columns: 1fr 150px; margin: 0 auto 60px; color: var(--charcoal); background-color: #eee9df; background-image: repeating-linear-gradient(0deg,rgba(94,83,65,.026) 0 1px,transparent 1px 4px),radial-gradient(ellipse at 12% 4%,rgba(255,255,255,.47),transparent 60%); box-shadow: 0 25px 36px rgba(0,0,0,.35),0 3px 6px rgba(0,0,0,.22); transform-origin: center bottom; }
