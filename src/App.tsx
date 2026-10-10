@@ -54,7 +54,6 @@ function JournalHero() {
   }
   return <section className="hero" id="top" aria-labelledby="hero-title" onPointerMove={handlePointerMove} onPointerLeave={resetPointer}>
     <div className="desk-grain" aria-hidden="true" />
-    <div className="hero-topline"><span>FIELD JOURNAL <i>NO. 01</i></span><span>MIT-WPU · PUNE, INDIA</span></div>
     <motion.div className="open-journal" initial={reduced ? false : { opacity: 0, y: 25, scale: .99 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: reduced ? 0 : .8, ease: [.2,.7,.2,1] }}>
       <div className="page-stack" aria-hidden="true" /><div className="journal-spine" aria-hidden="true" />
       <article className="journal-page journal-page-left">
