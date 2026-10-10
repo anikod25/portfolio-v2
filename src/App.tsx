@@ -1,7 +1,7 @@
 import { useState, type PointerEvent } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { ArrowDown, ArrowDownRight, ArrowUpRight, BookOpen, Check, Mail, Menu, X } from 'lucide-react'
-import { achievementExhibits, leadershipEducation, profiles, projects, skillGroups, type AchievementExhibit } from './content'
+import { achievementExhibits, leadershipEducation, profiles, projects, skillGroups } from './content'
 import { ProjectPresentation } from './ProjectPresentations'
 import { projectPresentationMotion } from './projectPresentationMotion'
 import './App.css'
@@ -18,7 +18,13 @@ function Navigation() {
     <a className="brand" href="#top" aria-label="Aniket Kodgirwar, home"><span className="brand-mark" aria-hidden="true"/><span>ANIKET KODGIRWAR<small>COMPUTER SCIENCE · PUNE</small></span></a>
     <button className="menu-toggle" aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
     <nav className={open ? 'site-nav is-open' : 'site-nav'} aria-label="Main navigation">{navItems.map(item => <a key={item.id} href={`#${item.id}`} onClick={() => setOpen(false)}>{item.label}</a>)}</nav>
-    <a className="header-contact" href={`mailto:${profiles.email}`}>LET'S TALK <ArrowUpRight size={14} /></a>
+    <div className="header-actions">
+      <a className="header-contact" href={`mailto:${profiles.email}`}>LET'S TALK <ArrowUpRight size={14} /></a>
+      <div className="header-socials" role="group" aria-label="Social profiles">
+        <a href={profiles.github} target="_blank" rel="noreferrer" aria-label="GitHub profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.94.58.1.79-.25.79-.56 0-.27-.01-1.16-.02-2.1-3.22.7-3.9-.78-3.9-.78-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.57-.29-5.27-1.29-5.27-5.74 0-1.27.46-2.3 1.2-3.12-.12-.3-.52-1.5.12-3.13 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.83 0c2.22-1.5 3.2-1.19 3.2-1.19.64 1.63.24 2.83.12 3.13.75.82 1.2 1.85 1.2 3.12 0 4.46-2.7 5.45-5.28 5.73.42.36.78 1.06.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .31.21.66.8.56A11.5 11.5 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/></svg></a>
+        <a href={profiles.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM3.56 9h3.56v11.45H3.56z"/></svg></a>
+      </div>
+    </div>
   </header>
 }
 
@@ -116,89 +122,42 @@ function Skills() {
   return <section className="section skills-section" id="skills"><div className="section-wrap"><SectionHeading label="02 / TOOLKIT" title="Things I reach for." intro="A practical set of languages, frameworks, and disciplines that keep changing as I build." /><motion.div className="skills-grid" initial={reduced ? false : { opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, amount: .25 }} transition={{ duration: reduced ? 0 : .45 }}>{skillGroups.map((group, i) => <article className="skill-group" key={group.name}><span className="eyebrow">0{i + 1} / {group.name}</span><p>{group.items.map((item, j) => <span key={item}>{item}{j < group.items.length - 1 && <i> · </i>}</span>)}</p></article>)}</motion.div></div></section>
 }
 
-function ExhibitArtwork({ exhibit }: { exhibit: AchievementExhibit }) {
-  const titleId = `artwork-title-${exhibit.id}`
-  const starPoints = (cx: number, cy: number, outer: number) => Array.from({ length: 10 }, (_, i) => {
-    const radius = i % 2 === 0 ? outer : outer * .44
-    const angle = -Math.PI / 2 + i * Math.PI / 5
-    return `${cx + Math.cos(angle) * radius},${cy + Math.sin(angle) * radius}`
-  }).join(' ')
-  return <div className={`exhibit-artwork artwork-${exhibit.id}`}>
-    <svg className="exhibit-corners" viewBox="0 0 100 100" aria-hidden="true"><path d="M7 2H2v5M93 2h5v5M2 93v5h5M98 93v5h-5"/></svg>
-    {exhibit.id === 'hackerrank' && <svg viewBox="0 0 240 80" role="img" aria-labelledby={titleId}>
-      <title id={titleId}>HackerRank five star rating</title>
-      {[24,72,120,168,216].map(cx => <polygon key={cx} points={starPoints(cx, 40, 14)} fill="currentColor" stroke="currentColor" strokeWidth="1.5" />)}
-    </svg>}
-    {exhibit.id === 'csi-fusion' && <svg viewBox="0 0 320 180" role="img" aria-labelledby={titleId}>
-      <title id={titleId}>First place at the CSI Fusion Agentic AI Sprint</title>
-      <text className="art-number" x="160" y="88" textAnchor="middle">01</text>
-      <line x1="126" y1="108" x2="194" y2="108" />
-      <text className="art-caption" x="160" y="132" textAnchor="middle">CSI FUSION · AGENTIC AI SPRINT</text>
-    </svg>}
-    {exhibit.id === 'hackmit' && <svg viewBox="0 0 240 180" role="img" aria-labelledby={titleId}>
-      <title id={titleId}>HackMIT top ten of one hundred teams</title>
-      {Array.from({ length: 100 }, (_, i) => {
-        const column = i % 10
-        const row = Math.floor(i / 10)
-        const isTopTen = i < 10
-        return <circle key={i} className={isTopTen ? 'dot-top-ten' : 'dot-muted'} cx={52 + column * 15} cy={17 + row * 13} r="3.5" />
-      })}
-      <text className="art-caption" x="120" y="166" textAnchor="middle">TOP 10 / 100 TEAMS</text>
-    </svg>}
-    {exhibit.id === 'leetcode' && <svg viewBox="0 0 300 150" role="img" aria-labelledby={titleId}>
-      <title id={titleId}>More than 150 LeetCode problems solved</title>
-      <text className="art-number" x="150" y="75" textAnchor="middle">150+</text>
-      <line x1="94" y1="96" x2="206" y2="96" />
-      <text className="art-caption" x="150" y="119" textAnchor="middle">PROBLEMS SOLVED</text>
-    </svg>}
-    {exhibit.id === 'sih' && <svg viewBox="0 0 300 130" role="img" aria-labelledby={titleId}>
-      <title id={titleId}>Smart India Hackathon internal rounds through round three</title>
-      <line x1="56" y1="61" x2="244" y2="61" />
-      <circle className="node-complete" cx="56" cy="61" r="9" />
-      <circle className="node-complete" cx="150" cy="61" r="9" />
-      <circle className="node-current" cx="244" cy="61" r="11" />
-      <text className="art-caption" x="56" y="94" textAnchor="middle">R1</text>
-      <text className="art-caption" x="150" y="94" textAnchor="middle">R2</text>
-      <text className="art-caption" x="244" y="94" textAnchor="middle">R3</text>
-    </svg>}
-  </div>
-}
-
 function AchievementsExperience() {
   const reduced = useReducedMotion()
-  const [active, setActive] = useState('csi-fusion')
-  const [open, setOpen] = useState<string | null>(null)
-  const selected = achievementExhibits.find(exhibit => exhibit.id === open)
-  const motionFrom = (index: number) => {
-    if (reduced) return false
-    const directions = [{ x: -12 }, { y: 12 }, { y: 16 }, { x: 12 }, { y: -10 }]
-    return { opacity: 0, ...directions[index % directions.length] }
-  }
+  const [selectedId, setSelectedId] = useState<string | null>(null)
+  const selected = achievementExhibits.find(item => item.id === selectedId)
   return <section className="section gallery-section" id="experience"><div className="gallery-wrap">
-    <div className="gallery-heading"><SectionHeading label="03 / ACHIEVEMENTS & EXPERIENCE" title="A life, in the making." intro="Five achievements across competition and technical practice."/><p className="gallery-instruction">SELECT AN EXHIBIT <span>↘</span></p></div>
-    <div className="exhibition-wall" aria-label="Achievement gallery">
-      {achievementExhibits.map((exhibit, i) => {
-        const isActive = active === exhibit.id
-        const isOpen = open === exhibit.id
-        return <motion.button key={exhibit.id} type="button" className={`gallery-exhibit exhibit-${exhibit.id}${isActive ? ' is-active' : ''}`} data-exhibit={exhibit.id} aria-pressed={isOpen} aria-controls={isOpen ? 'exhibit-note' : undefined} onMouseEnter={() => setActive(exhibit.id)} onFocus={() => setActive(exhibit.id)} onClick={() => { setActive(exhibit.id); setOpen(isOpen ? null : exhibit.id) }} initial={motionFrom(i)} whileInView={{ opacity: 1, x: 0, y: 0 }} viewport={{ once: true, amount: .16 }} transition={{ duration: reduced ? 0 : .42, delay: reduced ? 0 : Math.min(i * .045, .22), ease: [.2,.7,.2,1] }}>
-          <span className="exhibit-frame"><span className="exhibit-index">FIG. {String(i + 1).padStart(2,'0')}</span><ExhibitArtwork exhibit={exhibit}/></span>
-          <span className="exhibit-caption"><span className="exhibit-category">{exhibit.category}{exhibit.date && <i> · {exhibit.date}</i>}</span><strong>{exhibit.title}</strong><span className="exhibit-description">{exhibit.caption}</span></span>
-        </motion.button>
+    <div className="gallery-heading"><SectionHeading label="03 / ACHIEVEMENTS" title="A record of progress." intro="Five milestones across competition and technical practice."/><p className="gallery-instruction">SELECT A MILESTONE <span>&#8599;</span></p></div>
+    <ol className="achievement-record-list" aria-label="Verified achievements">
+      {achievementExhibits.map((exhibit, index) => {
+        const isSelected = selectedId === exhibit.id
+        return <li className={`achievement-record${isSelected ? ' is-selected' : ''}`} key={exhibit.id}>
+          <button className="achievement-record-button" type="button" aria-expanded={isSelected} aria-controls={isSelected ? 'achievement-detail' : undefined} onClick={() => setSelectedId(isSelected ? null : exhibit.id)}>
+            <span className="achievement-record-index">0{index + 1}</span>
+            <span className="achievement-record-main"><span className="achievement-record-category">{exhibit.category}{exhibit.date && <i> · {exhibit.date}</i>}</span><strong>{exhibit.title}</strong><span className="achievement-record-caption">{exhibit.caption}</span></span>
+            <span className="achievement-record-arrow" aria-hidden="true">{isSelected ? '−' : '+'}</span>
+          </button>
+        </li>
       })}
-    </div>
-    <AnimatePresence initial={false}>{selected && <motion.aside id="exhibit-note" className="exhibit-note" initial={reduced ? false : { opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: reduced ? 0 : .3 }} aria-live="polite">
-      <div><p className="eyebrow">EXHIBIT NOTE / {selected.category}</p><h3>{selected.title}<span>{selected.caption}</span></h3></div><p className="exhibit-detail">{selected.detail}</p><button type="button" className="exhibit-close" onClick={() => setOpen(null)} aria-label="Close exhibit note"><X size={16}/></button>
+    </ol>
+    <AnimatePresence initial={false}>{selected && <motion.aside id="achievement-detail" className="achievement-detail" initial={reduced ? false : { opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={reduced ? undefined : { opacity: 0, height: 0 }} transition={{ duration: reduced ? 0 : .24 }} aria-live="polite">
+      <div><p className="eyebrow">MILESTONE NOTE / {selected.category}</p><h3>{selected.title}<span>{selected.caption}</span></h3></div><p>{selected.detail}</p>{selected.id === 'leetcode' && <a href={profiles.leetcode} target="_blank" rel="noreferrer">View LeetCode profile <ArrowUpRight size={14}/></a>}<button className="achievement-detail-close" type="button" onClick={() => setSelectedId(null)} aria-label="Close milestone details"><X size={16}/></button>
     </motion.aside>}</AnimatePresence>
-    <div className="gallery-context" aria-labelledby="gallery-context-title">
-      <div className="gallery-context-heading"><p className="eyebrow">BEYOND THE ACHIEVEMENTS</p><h3 id="gallery-context-title">Leadership &amp; education</h3></div>
-      {leadershipEducation.map(item => <article className={`gallery-context-item context-${item.id}`} key={item.id}><span className="context-label">{item.label}</span><h4>{item.title}</h4><p>{item.description}</p></article>)}
+    <div className="achievement-context" aria-labelledby="achievement-context-title">
+      <div className="achievement-context-heading"><p className="eyebrow">ALSO PART OF THE JOURNEY</p><h3 id="achievement-context-title">Leadership &amp; education</h3></div>
+      {leadershipEducation.map(item => <article className="achievement-context-item" key={item.id}><span>{item.label}</span><h4>{item.title}</h4><p>{item.description}</p></article>)}
     </div>
-    <p className="gallery-footnote">Five selected achievements, shown with original diagrammatic artwork.</p>
   </div></section>
 }
-
 function About() {
-  return <section className="section about-section" id="about"><div className="section-wrap about-grid"><SectionHeading label="04 / ABOUT ANIKET" title="Curiosity, with a practical streak." /><div className="about-copy"><p className="about-lead">I'm a Computer Science Engineering student at MIT-WPU in Pune, drawn to cybersecurity, agentic AI, and the systems people rely on.</p><p>I like turning questions into working software, and learning from the details that surface along the way.</p><div className="about-writing"><span className="writing-rule" aria-hidden="true"/><p className="eyebrow">IN THE MARGINS</p><p>Technical notes, small experiments, and poetry all have a place in how I think. The available source material did not include published writing to reproduce here.</p></div><div className="about-signature">Aniket <span>— learning by making</span></div></div></div></section>
+  return <section className="section about-section" id="about">
+    <div className="section-wrap about-grid"><SectionHeading label="04 / ABOUT ANIKET" title="Curiosity, with a practical streak." /><div className="about-copy"><p className="about-lead">I'm a Computer Science Engineering student at MIT-WPU in Pune, drawn to cybersecurity, agentic AI, and the systems people rely on.</p><p>I like turning questions into working software, and learning from the details that surface along the way.</p>
+      <article className="about-writing" aria-labelledby="life-poem-title">
+        <p className="eyebrow">IN THE MARGINS</p><h3 id="life-poem-title">Life</h3>
+        <div className="poem-lines"><p>An open canvas soon to be filled up with memories</p><p>waiting for the stories to make it interesting</p><p>Warm like the sunshine, soothing as the rain</p><p>Chaotic as the storm, calm as the sea</p><p>Life is mysterious but a journey full of stories</p></div>
+      </article>
+      <div className="about-signature">Aniket <span>— learning by making</span></div></div></div>
+  </section>
 }
 
 function Contact() {
