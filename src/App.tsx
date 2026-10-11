@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type PointerEvent } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { ArrowDown, ArrowDownRight, ArrowUpRight, BookOpen, Check, Mail, Menu, X } from 'lucide-react'
+import { ArrowDown, ArrowDownRight, ArrowUpRight, BookOpen, Mail, Menu, X } from 'lucide-react'
 import { achievementExhibits, leadershipEducation, profiles, projects, skillGroups } from './content'
 import { ProjectPresentation } from './ProjectPresentations'
 import { projectPresentationMotion } from './projectPresentationMotion'
@@ -185,7 +185,11 @@ function Contact() {
     <motion.div className="contact-paper" initial={reduced ? false : { opacity: 0, y: 18, rotate: .6 }} whileInView={{ opacity: 1, y: 0, rotate: 0 }} viewport={{ once: true, amount: .35 }} transition={{ duration: reduced ? 0 : .48, ease: [.2,.7,.2,1] }}>
       <div className="contact-paperclip" aria-hidden="true"/><div className="contact-content"><p className="eyebrow">THE NEXT ENTRY STARTS HERE</p><h2>Have something<br /><em>in mind?</em></h2><p className="contact-copy">Have a project, an idea, or a problem worth solving? Let's talk.</p><span className="ink-underline" aria-hidden="true"><svg viewBox="0 0 450 18" preserveAspectRatio="none"><path d="M3 12C93 4 201 14 293 8c53-3 104-2 154 1" /></svg></span>
         <a className="contact-email" href={`mailto:${profiles.email}`}>{profiles.email}<ArrowUpRight /></a>
-        <div className="social-links"><a href={profiles.github} target="_blank" rel="noreferrer"><span className="social-mark">GH</span> GitHub <ArrowUpRight size={13} /></a><a href={profiles.linkedin} target="_blank" rel="noreferrer"><span className="social-mark">in</span> LinkedIn <ArrowUpRight size={13} /></a><a href={profiles.leetcode} target="_blank" rel="noreferrer"><Check size={15} /> LeetCode <ArrowUpRight size={13} /></a></div>
+        <div className="social-links">
+          <a href={profiles.github} target="_blank" rel="noreferrer" aria-label="GitHub profile"><svg className="social-brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.94.58.1.79-.25.79-.56 0-.27-.01-1.16-.02-2.1-3.22.7-3.9-.78-3.9-.78-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.57-.29-5.27-1.29-5.27-5.74 0-1.27.46-2.3 1.2-3.12-.12-.3-.52-1.5.12-3.13 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.83 0c2.22-1.5 3.2-1.19 3.2-1.19.64 1.63.24 2.83.12 3.13.75.82 1.2 1.85 1.2 3.12 0 4.46-2.7 5.45-5.28 5.73.42.36.78 1.06.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .31.21.66.8.56A11.5 11.5 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/></svg>GitHub <ArrowUpRight size={13} /></a>
+          <a href={profiles.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile"><svg className="social-brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM3.56 9h3.56v11.45H3.56z"/></svg>LinkedIn <ArrowUpRight size={13} /></a>
+          <a href={profiles.leetcode} target="_blank" rel="noreferrer" aria-label="LeetCode profile"><svg className="social-brand-icon leetcode-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="m14.3 3.4-6.1 6.1a5.6 5.6 0 0 0 0 7.9l2.2 2.2"/><path d="m14.3 3.4 2.3 2.3M10.4 13h9M10.4 16.2h6"/></svg>LeetCode <ArrowUpRight size={13} /></a>
+        </div>
       </div><div className="contact-envelope" aria-hidden="true"><span>AK</span></div>
     </motion.div>
     <footer className="site-footer"><span>ANIKET KODGIRWAR · FIELD NOTES</span><a href="#top">BACK TO THE BEGINNING <ArrowUpRight size={12} /></a><span>MADE WITH CURIOSITY <Mail size={12} /></span></footer>
